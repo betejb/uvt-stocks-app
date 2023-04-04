@@ -1,0 +1,4 @@
+rootProject.name = 'stocks-app'
+
+include 'stocks-app-api'
+include 'stocks-app-ui'

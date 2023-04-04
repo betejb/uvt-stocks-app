@@ -1,0 +1,21 @@
+plugins {
+  id 'java'
+  id "com.github.node-gradle.node" version "3.5.1"
+}
+group = 'com.endava.stocks'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+  mavenCentral()
+}
+
+node {
+  download = true
+  version = "18.13.0"
+}
+
+jar {
+  from 'dist/app' into 'public'
+}
+
+jar.dependsOn 'npm_run_build'
