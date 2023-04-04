@@ -11,7 +11,7 @@
 
 1. Clone project and open in IntelliJ
     ```shell
-    git clone https://github.com/catalin-halic/uvt-project.git
+    git clone https://github.com/EndavaCollab/uvt-stocks-app.git
     ```
 
 2. Setup SDK
