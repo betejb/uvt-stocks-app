@@ -30,15 +30,64 @@ export class AuthComponent {
     this.viewType = viewType;
   }
 
-  onLogIn(): void {}
+  onLogIn(): void {
+    console.log(this.loginForm.value);
 
-  onRegister(): void {}
+    this.authService.logIn(this.loginForm.value).subscribe(
+      (response: any) => {
+        console.log('Login with success!');
 
-  getErrorMessage(formControl: FormControl) {
+        console.log(response);
+
+        this.router.navigate(['/', 'dashboard']);
+      },
+      (err) => {
+        console.log('Login with failed!');
+        console.log(err);
+      }
+    );
+  }
+
+  onRegister(): void {
+    console.log(this.registerForm.value);
+
+    this.authService.logIn(this.registerForm.value).subscribe(
+      (response: any) => {
+        console.log('Register with success!');
+
+        this.viewType = 'login';
+        this.resetLoginForm();
+
+        console.log(response);
+      },
+      (err) => {
+        console.log('Register with failed!');
+        console.log(err);
+      }
+    );
+  }
+
+  getErrorMessage(formControl: any) {
     if (formControl.hasError('required')) {
       return 'You must enter a value';
     }
 
     return formControl.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  private resetLoginForm() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+    });
+  }
+
+  private resetRegisterForm() {
+    this.registerForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+      reTypePassword: new FormControl('', [Validators.required]),
+    });
   }
 }
