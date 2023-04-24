@@ -14,6 +14,8 @@ public class UserResponse {
 
     private String email;
 
+    private String username;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<String> roles;
 

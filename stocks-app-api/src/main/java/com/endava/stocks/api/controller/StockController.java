@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/stocks")
 @CrossOrigin(origins = "http://localhost:4200")
 public class StockController {
 
@@ -20,9 +20,9 @@ public class StockController {
         this.stockService = stockService;
     }
 
-    @GetMapping(path = "/getAllByTitle/{title}")
-    public ApiResponse getAllBy(@PathVariable String title) {
-        return new ApiResponse(HttpStatus.OK.value(), "Un string", stockService.findAllBy(title));
+    @GetMapping(path = "/getAllByName/{name}")
+    public ApiResponse getAllBy(@PathVariable String name) {
+        return new ApiResponse(HttpStatus.OK.value(), "Un string", stockService.findAllBy(name));
     }
 
     @GetMapping(path = "/getAllByYear/{year}")
@@ -31,31 +31,31 @@ public class StockController {
     }
 
     @PostMapping(path = "/stock")
-    public ApiResponse sendMovie(@Valid @RequestBody StockItem movie) {
+    public ApiResponse sendStock(@Valid @RequestBody StockItem stockItem) {
         System.out.println("Sending new movie to the database...");
         return ApiResponse.<StockResponse>builder()
                 .status(HttpStatus.OK.value())
-                .message("Movie added to the database")
-                .data(stockService.sendMovie(movie))
+                .message("Stock item added to the database")
+                .data(stockService.sendMovie(stockItem))
                 .build();
     }
 
-    @PutMapping(path = "/movie/{id}")
-    public ApiResponse updateMovie(@PathVariable Long id, @RequestBody StockItem movie) {
-        System.out.println("Updating movie with " + id + " in the database... ");
+    @PutMapping(path = "/stock/{id}")
+    public ApiResponse updateMovie(@PathVariable Long id, @RequestBody StockItem stockItem) {
+        System.out.println("Updating stock item with " + id + " in the database... ");
         return ApiResponse.<StockResponse>builder()
                 .status(HttpStatus.OK.value())
-                .message("Movie updated successfully!")
-                .data(stockService.updateMovie(id, movie))
+                .message("Stock item updated successfully!")
+                .data(stockService.updateMovie(id, stockItem))
                 .build();
     }
 
-    @DeleteMapping(path = "/movie/{id}")
+    @DeleteMapping(path = "/stock/{id}")
     public ApiResponse deleteMovie(@PathVariable Long id) {
-        System.out.println("Deleting movie with "+ id + " from the database...");
+        System.out.println("Deleting stock item with "+ id + " from the database...");
         return ApiResponse.<StockResponse>builder()
                 .status(HttpStatus.OK.value())
-                .message("Movie deleted successfully!")
+                .message("Stock item deleted successfully!")
                 .data(stockService.deleteMovie(id))
                 .build();
     }

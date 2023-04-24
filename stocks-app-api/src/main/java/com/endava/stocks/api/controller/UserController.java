@@ -1,6 +1,5 @@
 package com.endava.stocks.api.controller;
 
-import com.endava.stocks.api.ApplicationConstants;
 import com.endava.stocks.api.model.UserItem;
 import com.endava.stocks.api.response.ApiResponse;
 import com.endava.stocks.api.service.UserService;
@@ -13,7 +12,6 @@ import java.util.Arrays;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     private final UserService userService;
 
@@ -26,7 +24,7 @@ public class UserController {
         System.out.println("registerUser URL called...");
         return ApiResponse.builder()
                 .status(HttpStatus.OK.value())
-                .message(ApplicationConstants.USER_REGISTERED)
+                .message("User registered successfully!")
                 .data(Arrays.asList(userService.registerUser(userItem)))
                 .build();
     }
@@ -36,7 +34,7 @@ public class UserController {
         System.out.println("loginUser URL called...");
         return ApiResponse.builder()
                 .status(HttpStatus.OK.value())
-                .message(ApplicationConstants.USER_LOGGED_IN)
+                .message("User successfully logged in!")
                 .data(Arrays.asList(userService.loginUser(userItem)))
                 .build();
     }

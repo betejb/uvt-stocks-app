@@ -1,6 +1,5 @@
 package com.endava.stocks.api.service;
 
-import com.endava.stocks.api.ApplicationConstants;
 import com.endava.stocks.api.exception.StockAlreadyExistsException;
 import com.endava.stocks.api.exception.StockNotFoundException;
 import com.endava.stocks.api.model.StockItem;
@@ -20,44 +19,44 @@ public class StockService {
         this.stockRepository = stockRepository;
     }
 
-    public List<StockResponse> sendMovie(StockItem movie) {
-        Optional<StockItem> movieFoundInDb = stockRepository.findOneByTitle(movie.getTitle());
+    public List<StockResponse> sendStock(StockItem stockItem) {
+        Optional<StockItem> stockFoundInDb = stockRepository.findOneByTitle(stockItem.getTitle());
 
-        if (movieFoundInDb.isPresent()) {
-            throw new StockAlreadyExistsException(ApplicationConstants.STOCK_ALREADY_EXISTS);
+        if (stockFoundInDb.isPresent()) {
+            throw new StockAlreadyExistsException("Stock already exists in the database!");
         }
 
-        stockRepository.save(movie);
-        return loadMovies();
+        stockRepository.save(stockItem);
+        return loadStocks();
     }
 
-    public List<StockResponse> updateMovie(Long id, StockItem movie) {
-        Optional<StockItem> movieToBeUpdated = stockRepository.findById(id);
+    public List<StockResponse> updateStock(Long id, StockItem stockItem) {
+        Optional<StockItem> stockItemToBeUpdated = stockRepository.findById(id);
 
-        if (!movieToBeUpdated.isPresent()) {
-            throw new StockNotFoundException(ApplicationConstants.STOCK_DOES_NOT_EXISTS);
+        if (!stockItemToBeUpdated.isPresent()) {
+            throw new StockNotFoundException("Stock does not exist in the database!");
         }
 
-        movie.setId(id);
-        stockRepository.save(movie);
-        return loadMovies();
+        stockItem.setId(id);
+        stockRepository.save(stockItem);
+        return loadStocks();
     }
 
-    public List<StockResponse> deleteMovie(Long id) {
-        Optional<StockItem> movieToBeDeleted = stockRepository.findById(id);
+    public List<StockResponse> deleteStock(Long id) {
+        Optional<StockItem> stockToBeDeleted = stockRepository.findById(id);
 
-        if (!movieToBeDeleted.isPresent()) {
+        if (!stockToBeDeleted.isPresent()) {
             throw new StockNotFoundException("Stock does not exist in the database!");
         }
 
         stockRepository.deleteById(id);
-        return loadMovies();
+        return loadStocks();
     }
 
-    public List<StockResponse> loadMovies() {
-        List<StockItem> movies = stockRepository.findAll();
+    public List<StockResponse> loadStocks() {
+        List<StockItem> stocks = stockRepository.findAll();
 
-        return movies.stream()
+        return stocks.stream()
                 .filter(m -> m.getTitle() != null && !m.getTitle().isEmpty())
                 .map(m -> StockResponse.builder()
                         .id(m.getId())

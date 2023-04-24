@@ -29,4 +29,9 @@ public class UserItem {
     @NotEmpty
     @Column(name = "password")
     private String password;
+
+    @NotNull
+    @NotEmpty
+    @Column(name="username")
+    private String username;
 }

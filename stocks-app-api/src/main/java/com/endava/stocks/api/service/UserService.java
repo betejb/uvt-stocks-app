@@ -29,10 +29,12 @@ public class UserService {
         return UserResponse.builder()
                 .id(registeredUser.getId())
                 .email(registeredUser.getEmail())
+                .username(registeredUser.getUsername())
                 .build();
     }
 
     public UserResponse loginUser(UserItem userItem) {
+        System.out.println("login user");
         Optional<UserItem> userFoundInDb = userRepository.findOneByEmail(userItem.getEmail());
 
         if (userFoundInDb.isPresent()) {
@@ -43,6 +45,7 @@ public class UserService {
                 return UserResponse.builder()
                         .id(user.getId())
                         .email(user.getEmail())
+                        .username(user.getUsername())
                         .roles(Arrays.asList("DEFAULT", "ADMIN"))
                         .passwordExpiryDate("31.12.2023")
                         .build();
