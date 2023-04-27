@@ -1,0 +1,21 @@
+<div style="display: flex">
+  <div style="width: 30vw">
+    <app-drawer></app-drawer>
+  </div>
+
+  <div>
+    <app-chart></app-chart>
+
+    <div style="display: flex">
+      <app-stock-info
+        *ngFor="let item of items"
+        [title]="item.title"
+        [value]="item.value"
+        [isIncrease]="item.isIncrease"
+        [increaseValue]="item.increaseValue"
+        [iconName]="item.iconName"
+        [iconColor]="item.iconColor"
+      ></app-stock-info>
+    </div>
+  </div>
+</div>

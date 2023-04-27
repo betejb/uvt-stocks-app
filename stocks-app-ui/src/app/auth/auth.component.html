@@ -2,11 +2,7 @@
   <mat-card class="card-container" *ngSwitchCase="'login'" id="login-card">
     <mat-card-content *ngIf="loginForm" [formGroup]="loginForm">
       <div class="div-logo" id="div-logo-login">
-        <img
-          class="img-logo"
-          id="img-logo-login"
-          src="https://www.endava.com/-/media/EndavaDigital/Endava/Images/MetaDataImages/preview-image.ashx"
-        />
+        <img class="img-logo" id="img-logo-login" src="assets/logo-image.png" />
       </div>
 
       <div class="div-input-field">
@@ -67,11 +63,8 @@
     id="register-card"
   >
     <mat-card-content *ngIf="registerForm" [formGroup]="registerForm">
-      <div class="div-logo-regiser">
-        <img
-          class="img-logo-register"
-          src="https://www.endava.com/-/media/EndavaDigital/Endava/Images/MetaDataImages/preview-image.ashx"
-        />
+      <div class="div-logo">
+        <img class="img-logo" src="assets/logo-image.png" />
       </div>
 
       <div class="div-input-field">

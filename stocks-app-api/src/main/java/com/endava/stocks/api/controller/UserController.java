@@ -12,6 +12,7 @@ import java.util.Arrays;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     private final UserService userService;
 
@@ -30,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/login")
-    public ApiResponse loginUser(@Valid @RequestBody UserItem userItem) {
+    public ApiResponse loginUser(@RequestBody UserItem userItem) {
         System.out.println("loginUser URL called...");
         return ApiResponse.builder()
                 .status(HttpStatus.OK.value())

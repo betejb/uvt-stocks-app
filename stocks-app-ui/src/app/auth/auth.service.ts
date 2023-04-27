@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,12 +9,24 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
-  public logIn(payload: { email: string; password: string }) {
+  public logIn(payload: { email: string; password: string }): Observable<any> {
     let body: any = {
       email: payload.email,
       password: payload.password,
     };
-    return this.httpClient.post(`${environment.apiUrl}/api/auth/login`, body);
+    console.log(`${environment.apiUrl}/api/auth/login`);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    return this.httpClient.post(
+      `${environment.apiUrl}/api/auth/login`,
+      body,
+      httpOptions
+    );
   }
 
   public register(payload: {
@@ -21,7 +34,7 @@ export class AuthService {
     email: string;
     password: string;
     reTypePassword: string;
-  }) {
+  }): Observable<any> {
     let body: any = {
       email: payload.email,
       username: payload.username,

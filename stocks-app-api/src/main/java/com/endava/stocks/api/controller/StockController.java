@@ -36,37 +36,37 @@ public class StockController {
         return ApiResponse.<StockResponse>builder()
                 .status(HttpStatus.OK.value())
                 .message("Stock item added to the database")
-                .data(stockService.sendMovie(stockItem))
+                .data(stockService.sendStock(stockItem))
                 .build();
     }
 
     @PutMapping(path = "/stock/{id}")
-    public ApiResponse updateMovie(@PathVariable Long id, @RequestBody StockItem stockItem) {
+    public ApiResponse updateStock(@PathVariable Long id, @RequestBody StockItem stockItem) {
         System.out.println("Updating stock item with " + id + " in the database... ");
         return ApiResponse.<StockResponse>builder()
                 .status(HttpStatus.OK.value())
                 .message("Stock item updated successfully!")
-                .data(stockService.updateMovie(id, stockItem))
+                .data(stockService.updateStock(id, stockItem))
                 .build();
     }
 
     @DeleteMapping(path = "/stock/{id}")
-    public ApiResponse deleteMovie(@PathVariable Long id) {
+    public ApiResponse deleteStock(@PathVariable Long id) {
         System.out.println("Deleting stock item with "+ id + " from the database...");
         return ApiResponse.<StockResponse>builder()
                 .status(HttpStatus.OK.value())
                 .message("Stock item deleted successfully!")
-                .data(stockService.deleteMovie(id))
+                .data(stockService.deleteStock(id))
                 .build();
     }
 
     @GetMapping(path = "/movie")
-    public ApiResponse loadMovies() {
+    public ApiResponse loadStocks() {
         System.out.println("Getting the list of movies from the database...");
         return ApiResponse.<StockResponse>builder()
                 .status(HttpStatus.OK.value())
                 .message("Getting the list of movies from the database...")
-                .data(stockService.loadMovies())
+                .data(stockService.loadStocks())
                 .build();
     }
 }

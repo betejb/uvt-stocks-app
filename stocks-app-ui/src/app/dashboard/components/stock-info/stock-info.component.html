@@ -1,0 +1,26 @@
+<mat-card class="card-element">
+  <mat-card-content>
+    <div style="display: flex">
+      <div>
+        <p class="lbl-title">{{ title }}</p>
+        <p class="lbl-value">{{ value | currency }}</p>
+      </div>
+      <div class="div-icon" [ngStyle]="{ 'background-color': iconColor }">
+        <mat-icon class="icon" [fontIcon]="iconName"></mat-icon>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <mat-icon
+        fontIcon="trending_up"
+        [ngStyle]="{ color: isIncrease == true ? 'green' : 'red' }"
+      ></mat-icon>
+      <p style="margin-left: 6px; color: gray">
+        <span [ngStyle]="{ color: isIncrease == true ? 'green' : 'red' }">{{
+          increaseValue | currency
+        }}</span>
+        / month
+      </p>
+    </div>
+  </mat-card-content>
+</mat-card>

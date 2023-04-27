@@ -11,9 +11,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChartComponent } from './dashboard/components/chart/chart.component';
+import { StockInfoComponent } from './dashboard/components/stock-info/stock-info.component';
+import { MatIconModule } from '@angular/material/icon';
+import { DrawerComponent } from './dashboard/components/drawer/drawer.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, DashboardComponent],
+  declarations: [
+    AppComponent,
+    AuthComponent,
+    DashboardComponent,
+    ChartComponent,
+    StockInfoComponent,
+    DrawerComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +34,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
