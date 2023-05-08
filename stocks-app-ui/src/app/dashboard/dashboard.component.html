@@ -3,10 +3,10 @@
     <app-drawer></app-drawer>
   </div>
 
-  <div>
+  <div style="width: 70vw">
     <app-chart></app-chart>
 
-    <div style="display: flex">
+    <div class="flex-container">
       <app-stock-info
         *ngFor="let item of items"
         [title]="item.title"

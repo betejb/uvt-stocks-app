@@ -3,11 +3,16 @@ package com.endava.stocks.api.service;
 import com.endava.stocks.api.exception.StockAlreadyExistsException;
 import com.endava.stocks.api.exception.StockNotFoundException;
 import com.endava.stocks.api.model.StockItem;
+import com.endava.stocks.api.model.StockWrapper;
 import com.endava.stocks.api.repository.StockRepository;
 import com.endava.stocks.api.response.StockResponse;
 import org.springframework.stereotype.Service;
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -75,4 +80,20 @@ public class StockService {
     public List<StockItem> findByYearGreaterThan(int year) {
         return stockRepository.findByYearGreaterThan(year);
     }
+
+    public StockWrapper findStock(String ticker) {
+        try {
+
+            Stock intel = YahooFinance.get("INTC"); // single request
+            System.out.println(intel);
+
+            return new StockWrapper(YahooFinance.get(ticker));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+
+
 }

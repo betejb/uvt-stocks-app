@@ -15,6 +15,8 @@ import { ChartComponent } from './dashboard/components/chart/chart.component';
 import { StockInfoComponent } from './dashboard/components/stock-info/stock-info.component';
 import { MatIconModule } from '@angular/material/icon';
 import { DrawerComponent } from './dashboard/components/drawer/drawer.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { DrawerComponent } from './dashboard/components/drawer/drawer.component'
     ChartComponent,
     StockInfoComponent,
     DrawerComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { DrawerComponent } from './dashboard/components/drawer/drawer.component'
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

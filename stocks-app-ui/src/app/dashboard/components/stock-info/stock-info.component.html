@@ -12,7 +12,7 @@
 
     <div style="display: flex">
       <mat-icon
-        fontIcon="trending_up"
+        [fontIcon]="isIncrease ? 'trending_up' : 'trending_down'"
         [ngStyle]="{ color: isIncrease == true ? 'green' : 'red' }"
       ></mat-icon>
       <p style="margin-left: 6px; color: gray">

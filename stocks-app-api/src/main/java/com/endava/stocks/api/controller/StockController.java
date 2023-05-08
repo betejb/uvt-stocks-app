@@ -8,6 +8,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+
 
 @RestController
 @RequestMapping("/api/stocks")
@@ -20,9 +22,11 @@ public class StockController {
         this.stockService = stockService;
     }
 
-    @GetMapping(path = "/getAllByName/{name}")
+    @GetMapping(path = "/byName/{name}")
     public ApiResponse getAllBy(@PathVariable String name) {
-        return new ApiResponse(HttpStatus.OK.value(), "Un string", stockService.findAllBy(name));
+        System.out.println(name);
+        return new ApiResponse(HttpStatus.OK.value(), "Get with success!", Arrays.asList(stockService.findStock(name)));
+//        return new ApiResponse(HttpStatus.OK.value(), "Un string", stockService.findAllBy(name));
     }
 
     @GetMapping(path = "/getAllByYear/{year}")

@@ -1,3 +1,13 @@
-.img-logo {
-    width: 200px;
+.div-logo {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    display: flex;
+    .img-logo {
+        width: 200px;
+        margin: auto;
+    }
+}
+
+.menu-item {
+    margin-top: 16px;
 }

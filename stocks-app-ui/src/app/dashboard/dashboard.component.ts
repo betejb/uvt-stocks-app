@@ -1,3 +1,4 @@
+import { StocksAPIService } from './stocks-api.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,41 +9,18 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
   items: Array<any> = [];
 
-  constructor() {
-    this.items.push({
-      title: 'Stocks',
-      value: '213121',
-      isIncrease: true,
-      increaseValue: 32,
-      iconName: 'credit_card',
-      iconColor: '#a0f7a6',
-    });
+  constructor(private stockApiService: StocksAPIService) {
+    let stocks = this.stockApiService.stocks;
 
-    this.items.push({
-      title: 'Bonds',
-      value: '211',
-      isIncrease: false,
-      increaseValue: 32,
-      iconName: 'money',
-      iconColor: '#6e3904',
-    });
-
-    this.items.push({
-      title: 'Crypto',
-      value: '251',
-      isIncrease: true,
-      increaseValue: 32,
-      iconName: 'currency_bitcoin',
-      iconColor: '#cddc39',
-    });
-
-    this.items.push({
-      title: 'EFTs',
-      value: '213121',
-      isIncrease: true,
-      increaseValue: 32,
-      iconName: 'sell',
-      iconColor: '#607d8b',
-    });
+    for (let item of stocks) {
+      this.items.push({
+        title: item.company,
+        value: item.price_2007,
+        isIncrease: item.price_2007 - item.price_2002 < 0 ? false : true,
+        increaseValue: item.price_2007 - item.price_2002,
+        iconName: 'query_stats',
+        iconColor: this.stockApiService.getColor(),
+      });
+    }
   }
 }
