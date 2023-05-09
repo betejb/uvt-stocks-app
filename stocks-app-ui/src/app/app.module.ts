@@ -17,6 +17,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { DrawerComponent } from './dashboard/components/drawer/drawer.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { UserPreviewComponent } from './user-preview/user-preview.component';
+import { CustomSearchComponent } from './custom-search/custom-search.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     StockInfoComponent,
     DrawerComponent,
     FavoritesComponent,
+    UserPreviewComponent,
+    CustomSearchComponent,
   ],
   imports: [
     BrowserModule,

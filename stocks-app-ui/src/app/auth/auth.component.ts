@@ -1,3 +1,4 @@
+import { UserService } from './../user-preview/user.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
@@ -23,7 +24,11 @@ export class AuthComponent {
 
   viewType: string = 'login';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   onViewTypeChange(viewType: string): void {
     this.viewType = viewType;
@@ -34,6 +39,13 @@ export class AuthComponent {
       (response: any) => {
         if (response.message != 'Bad credentials!') {
           console.log('Login with success!');
+
+          this.userService.setUser({
+            email: response.data[0].email,
+            username: response.data[0].username,
+          });
+
+          console.log(this.userService.getUser());
 
           this.resetLoginForm();
 

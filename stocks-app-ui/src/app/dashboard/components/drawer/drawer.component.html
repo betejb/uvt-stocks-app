@@ -2,20 +2,6 @@
   <img src="assets/logo-image.png" class="img-logo" />
 </div>
 
-<mat-card class="menu-item" (click)="onRoute('dashboard')">
-  <mat-card-content>
-    <p>Dashboard</p>
-  </mat-card-content>
-</mat-card>
+<app-user-preview></app-user-preview>
 
-<mat-card class="menu-item" (click)="onRoute('favorites')">
-  <mat-card-content>
-    <p>Favorites</p>
-  </mat-card-content>
-</mat-card>
-
-<mat-card class="menu-item" (click)="onRoute('auth')">
-  <mat-card-content>
-    <p>Logout</p>
-  </mat-card-content>
-</mat-card>
+<app-custom-search></app-custom-search>

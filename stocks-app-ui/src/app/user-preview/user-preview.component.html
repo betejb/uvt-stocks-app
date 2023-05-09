@@ -1,0 +1,23 @@
+<mat-card class="example-card" *ngIf="user">
+  <mat-card-header>
+    <mat-card-title-group style="padding-bottom: 16px">
+      <img
+        class="img-container"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx0hLwdzwhC7R2B2pn7e9-YYqpSiTQsZMDDA&usqp=CAU"
+      />
+      <mat-card-title>{{ user.username }}</mat-card-title>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <div style="display: flex">
+      <button
+        mat-button
+        style="margin-left: auto; margin-right: 0px"
+        (click)="onLogout()"
+      >
+        Logout
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
