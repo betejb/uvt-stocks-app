@@ -46,18 +46,18 @@ export class DashboardComponent {
 
     switch (orderItem.id) {
       case 1:
-        this.orderedItems = this.items.sort((a, b) => a.title.localeCompare(b));
+        this.orderedItems = this.items.sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
         break;
       case 2:
-        this.orderedItems = this.items.sort((a, b) =>
-          a.value.toString().localeCompare(b.value.toString())
-        );
+        this.orderedItems = this.items.sort((a, b) => a.value - b.value);
         break;
       case 3:
         this.orderedItems = this.items.filter((item) => item.isIncrease);
 
-        this.orderedItems = this.orderedItems.sort((a, b) =>
-          a.increaseValue.toString().localeCompare(b.increaseValue.toString())
+        this.orderedItems = this.orderedItems.sort(
+          (a, b) => a.increaseValue - b.increaseValue
         );
         break;
       case 4:
