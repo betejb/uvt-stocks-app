@@ -19,6 +19,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { UserPreviewComponent } from './user-preview/user-preview.component';
 import { CustomSearchComponent } from './custom-search/custom-search.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { CustomSearchComponent } from './custom-search/custom-search.component';
     FavoritesComponent,
     UserPreviewComponent,
     CustomSearchComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,8 @@ import { CustomSearchComponent } from './custom-search/custom-search.component';
     MatButtonModule,
     MatIconModule,
     MatAutocompleteModule,
+    MatSelectModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

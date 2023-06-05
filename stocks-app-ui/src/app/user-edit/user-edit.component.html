@@ -1,0 +1,45 @@
+<mat-card class="card-container" id="register-card">
+  <mat-card-content *ngIf="userForm" [formGroup]="userForm">
+    <div class="div-input-field">
+      <mat-form-field appearance="fill" class="input-field-form">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          placeholder="Username"
+          formControlName="username"
+          required
+          id="register-username-input"
+        />
+        <mat-error *ngIf="userForm.controls['username'].invalid">{{
+          getErrorMessage(userForm.controls["username"])
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="div-input-field">
+      <mat-form-field appearance="fill" class="input-field-form">
+        <mat-label>Enter image url</mat-label>
+        <input
+          matInput
+          placeholder="Enter image url"
+          formControlName="imageUrl"
+          required
+        />
+        <mat-error *ngIf="userForm.controls['imageUrl'].invalid">{{
+          getErrorMessage(userForm.controls["imageUrl"])
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="div-buttons-container">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!userForm.valid"
+        (click)="onSave()"
+        id="register-button"
+      >
+        Save
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

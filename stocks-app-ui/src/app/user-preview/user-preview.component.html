@@ -1,10 +1,8 @@
 <mat-card class="example-card" *ngIf="user">
   <mat-card-header>
     <mat-card-title-group style="padding-bottom: 16px">
-      <img
-        class="img-container"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx0hLwdzwhC7R2B2pn7e9-YYqpSiTQsZMDDA&usqp=CAU"
-      />
+      <img class="img-container" [src]="user.imageUrl" />
+
       <mat-card-title>{{ user.username }}</mat-card-title>
       <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
     </mat-card-title-group>
@@ -18,6 +16,17 @@
       >
         Logout
       </button>
+      <button
+        mat-button
+        style="margin-left: auto; margin-right: 0px"
+        (click)="onUpdate()"
+      >
+        Update
+      </button>
     </div>
   </mat-card-content>
 </mat-card>
+<app-user-edit
+  *ngIf="showUpdate"
+  (updateUser)="unpdateUserData()"
+></app-user-edit>

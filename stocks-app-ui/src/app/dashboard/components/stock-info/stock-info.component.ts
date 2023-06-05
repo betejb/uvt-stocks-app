@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-stock-info',
@@ -12,4 +12,12 @@ export class StockInfoComponent {
   @Input() increaseValue = 20;
   @Input() iconName: string = 'home';
   @Input() iconColor: string = 'blue';
+  @Input() isFavorite: boolean = false;
+  @Output() onFavorite: EventEmitter<any> = new EventEmitter();
+
+  constructor() {}
+
+  onFavoriteClicked(title: string): void {
+    this.onFavorite.emit(title);
+  }
 }

@@ -59,6 +59,7 @@ export class StocksAPIService {
       price_2002: 56.27,
       price_2007: 95.85,
       symbol: 'MMM',
+      isFavorite: false,
     },
     {
       company: 'Amazon.com',
@@ -68,6 +69,7 @@ export class StocksAPIService {
       price_2002: 17.01,
       price_2007: 93.43,
       symbol: 'AMZN',
+      isFavorite: false,
     },
     {
       company: 'Campbell Soup',
@@ -77,6 +79,7 @@ export class StocksAPIService {
       price_2002: 22.27,
       price_2007: 36.4,
       symbol: 'CPB',
+      isFavorite: false,
     },
     {
       company: 'Disney',
@@ -86,6 +89,7 @@ export class StocksAPIService {
       price_2002: 15.24,
       price_2007: 35.47,
       symbol: 'DIS',
+      isFavorite: false,
     },
     {
       company: 'Dow Chemical',
@@ -95,6 +99,7 @@ export class StocksAPIService {
       price_2002: 27.65,
       price_2007: 44.67,
       symbol: 'DOW',
+      isFavorite: false,
     },
     {
       company: 'Exxon Mobil',
@@ -104,6 +109,7 @@ export class StocksAPIService {
       price_2002: 32.82,
       price_2007: 91.36,
       symbol: 'XOM',
+      isFavorite: false,
     },
     {
       company: 'Ford',
@@ -113,6 +119,7 @@ export class StocksAPIService {
       price_2002: 9.63,
       price_2007: 8.37,
       symbol: 'F',
+      isFavorite: false,
     },
     {
       company: 'The Gap',
@@ -122,6 +129,7 @@ export class StocksAPIService {
       price_2002: 11.56,
       price_2007: 18.9,
       symbol: 'GPS',
+      isFavorite: false,
     },
     {
       company: 'General Mills',
@@ -131,6 +139,7 @@ export class StocksAPIService {
       price_2002: 22.1,
       price_2007: 28.76,
       symbol: 'GIS',
+      isFavorite: false,
     },
     {
       company: 'Hewlett Packard',
@@ -140,6 +149,7 @@ export class StocksAPIService {
       price_2002: 12.03,
       price_2007: 50.9,
       symbol: 'HPQ',
+      isFavorite: false,
     },
     {
       company: 'IBM',
@@ -149,6 +159,7 @@ export class StocksAPIService {
       price_2002: 60.36,
       price_2007: 116.3,
       symbol: 'IBM',
+      isFavorite: false,
     },
     {
       company: 'Johnson & Johnson',
@@ -158,6 +169,7 @@ export class StocksAPIService {
       price_2002: 52.3,
       price_2007: 66.25,
       symbol: 'JNJ',
+      isFavorite: false,
     },
     {
       company: 'Microsoft',
@@ -167,6 +179,7 @@ export class StocksAPIService {
       price_2002: 22.62,
       price_2007: 29.84,
       symbol: 'MSFT',
+      isFavorite: false,
     },
     {
       company: 'Monsanto',
@@ -176,6 +189,7 @@ export class StocksAPIService {
       price_2002: 7.2,
       price_2007: 86.93,
       symbol: 'MO',
+      isFavorite: false,
     },
     {
       company: 'PepsiCo',
@@ -185,6 +199,7 @@ export class StocksAPIService {
       price_2002: 36.69,
       price_2007: 73.74,
       symbol: 'PEP',
+      isFavorite: false,
     },
     {
       company: 'Starbucks',
@@ -194,6 +209,7 @@ export class StocksAPIService {
       price_2002: 10.5,
       price_2007: 26.84,
       symbol: 'SBUX',
+      isFavorite: false,
     },
     {
       company: 'Texas Instruments',
@@ -203,6 +219,7 @@ export class StocksAPIService {
       price_2002: 15.58,
       price_2007: 36.54,
       symbol: 'TXN',
+      isFavorite: false,
     },
     {
       company: 'Time Warner',
@@ -212,6 +229,7 @@ export class StocksAPIService {
       price_2002: 36.36,
       price_2007: 57.18,
       symbol: 'TWX',
+      isFavorite: false,
     },
     {
       company: 'United Health',
@@ -221,6 +239,7 @@ export class StocksAPIService {
       price_2002: 21.85,
       price_2007: 47.7,
       symbol: 'UNH',
+      isFavorite: false,
     },
     {
       company: 'Walmart',
@@ -230,6 +249,7 @@ export class StocksAPIService {
       price_2002: 50.51,
       price_2007: 47.53,
       symbol: 'WMT',
+      isFavorite: false,
     },
     {
       company: 'Whirlpool',
@@ -239,6 +259,7 @@ export class StocksAPIService {
       price_2002: 46.82,
       price_2007: 94.29,
       symbol: 'WHR',
+      isFavorite: false,
     },
     {
       company: 'Xerox',
@@ -248,6 +269,7 @@ export class StocksAPIService {
       price_2002: 5.26,
       price_2007: 17.54,
       symbol: 'XRX',
+      isFavorite: false,
     },
   ];
   constructor() {}
@@ -256,5 +278,19 @@ export class StocksAPIService {
     let index = Math.floor(Math.random() * (this.colors.length - 1));
 
     return this.colors[index];
+  }
+
+  public updateFavorite(title: string): void {
+    let stock = this.stocks.filter((item) => item.company == title)[0];
+
+    stock.isFavorite = !stock.isFavorite;
+
+    this.stocks = this.stocks.filter((item) => item.company != title);
+
+    this.stocks.push(stock);
+  }
+
+  public getFavorites() {
+    return this.stocks.filter((item) => item.isFavorite);
   }
 }

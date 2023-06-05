@@ -5,4 +5,5 @@ export interface StockItem {
   price_2002: any;
   price_2007: any;
   symbol: string;
+  isFavorite: boolean;
 }

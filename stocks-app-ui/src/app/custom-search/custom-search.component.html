@@ -9,6 +9,15 @@
       [formControl]="myControl"
       [matAutocomplete]="auto"
     />
+    <button
+      *ngIf="myControl.value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="resetValue()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option
         *ngFor="let option of filteredOptions | async"

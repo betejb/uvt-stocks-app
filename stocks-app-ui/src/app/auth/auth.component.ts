@@ -43,6 +43,8 @@ export class AuthComponent {
           this.userService.setUser({
             email: response.data[0].email,
             username: response.data[0].username,
+            imageUrl:
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx0hLwdzwhC7R2B2pn7e9-YYqpSiTQsZMDDA&usqp=CAU',
           });
 
           console.log(this.userService.getUser());

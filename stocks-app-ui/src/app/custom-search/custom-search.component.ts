@@ -28,8 +28,6 @@ export class CustomSearchComponent {
   }
 
   onOption(option: any): void {
-    console.log(option);
-
     let itemData = this.stockApiService.stocks.filter(
       (item) => item.company == option
     )[0];
@@ -42,6 +40,12 @@ export class CustomSearchComponent {
       iconName: 'query_stats',
       iconColor: this.stockApiService.getColor(),
     };
+  }
+
+  resetValue() {
+    this.myControl.setValue('');
+
+    this.stockItem = null;
   }
 
   private _filter(value: string): string[] {
